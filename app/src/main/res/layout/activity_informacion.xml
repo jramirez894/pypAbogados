@@ -1,0 +1,107 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="@color/azulFondo"
+    android:gravity="center">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/layoutConsultar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible"
+                >
+
+                <TextView
+                    android:id="@+id/textView_NumRadicado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="hola"
+                    android:gravity="center"
+                    android:textColor="@color/texto"
+                    android:textSize="25sp"/>
+
+                <TextView
+                    android:id="@+id/textView_NomCliente"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="hola"
+                    android:gravity="center"
+                    android:textColor="@color/texto"
+                    android:textSize="25sp"
+                    android:layout_marginTop="7dp"/>
+
+                <TextView
+                    android:id="@+id/textView_Demandado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="hola"
+                    android:gravity="center"
+                    android:textColor="@color/texto"
+                    android:textSize="25sp"
+                    android:layout_marginTop="7dp"/>
+
+                <TextView
+                    android:id="@+id/textView_JuzgadoActual"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="hola"
+                    android:gravity="center"
+                    android:textColor="@color/texto"
+                    android:textSize="25sp"
+                    android:layout_marginTop="7dp"/>
+
+                <TextView
+                    android:id="@+id/textView_UltimaActuacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="hola"
+                    android:gravity="center"
+                    android:textColor="@color/texto"
+                    android:textSize="25sp"
+                    android:layout_marginTop="7dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutEditar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <EditText
+                    android:id="@+id/edit_UltimaActuacion_Modificar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Ultima Actuacion"
+                    android:textColorHint="@color/texto"
+                    android:textColor="@color/texto"
+                    android:textSize="20sp"/>
+
+                <ImageView
+                    android:id="@+id/imageFoto_Modificar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="300dp"
+                    android:src="@drawable/camera"
+                    android:layout_marginTop="10dp"
+                    android:contentDescription="camara"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

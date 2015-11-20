@@ -1,0 +1,69 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:orientation="vertical"
+    android:background="@color/azulFondo">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteBuscarCliente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="Buscar Por"
+            android:textColor="@color/texto"
+            android:textColorHint="@color/texto"
+            android:completionThreshold="1"
+            android:drawableRight="@android:drawable/ic_menu_search"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioButtonCedula"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cedula"
+                    android:layout_weight="1"
+                    android:textColor="@color/texto"
+                    android:checked="true"/>
+
+                <RadioButton
+                    android:id="@+id/radioButtonRadicado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="#Radicado"
+                    android:layout_weight="1"
+                    android:textColor="@color/texto"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/listaClientes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/texto">
+
+        </ListView>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

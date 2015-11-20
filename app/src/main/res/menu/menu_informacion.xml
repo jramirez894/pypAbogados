@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.admin_sena.pypabogados.Informacion">
+
+    <item
+        android:id="@+id/editar_Cliente"
+        app:showAsAction="ifRoom"
+        android:icon="@mipmap/editar"
+        android:title="Editar Cliente"
+        android:visible="true"/>
+
+    <item
+        android:id="@+id/guardar_Cliente"
+        app:showAsAction="ifRoom"
+        android:icon="@mipmap/guardar"
+        android:title="Guardar Cliente"
+        android:visible="false"/>
+</menu>
