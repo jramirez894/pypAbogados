@@ -36,15 +36,18 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity
 {
+    //Declaracion de Variables
     EditText documento;
     EditText contrasena;
-
     Button iniciar;
 
+    //Variable booleana que se encargara de verificar si el usuario existe
     boolean existe = false;
 
+    //Variable para capturar la respuesta del servidor;
     String respuesta = "";
 
+    //Varriables para la animacion cargando
     ProgressBar progressLogin;
     View layoutProgress;
     View layoutMain;
@@ -55,25 +58,30 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Variables para ocultar la parte superior de la pantalla
         ActionBar actionBar= getSupportActionBar();
         actionBar.hide();
 
+        //Se relacionan las variables con el id que existe en la parte grafica
         documento =(EditText)findViewById(R.id.editNum_Documento);
         contrasena =(EditText)findViewById(R.id.editContrasena);
-
         iniciar =(Button)findViewById(R.id.buttonIniciarSesion);
 
-        //Vista Login
+        //Animacion Vista Login
         progressLogin = (ProgressBar) findViewById(R.id.progressLogin);
 
-        //Vistas del login
+        //Animacion Vistas del login
         layoutProgress = (View) findViewById(R.id.layoutProgress);
         layoutMain = (View) findViewById(R.id.layout_MainActivity);
 
+        //Click del boton
         iniciar.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
+                //Se capturar las textos en las variables de tipo String para verificar si estan Vacias y si no se pone
+                //en funcion la animacion y se coneccta con la tarea para hacer la conexion enviando como parametro los dos textos
                 String capDocumento = documento.getText().toString();
                 String capContrasena = contrasena.getText().toString();
                 if (capDocumento.equals("") ||
@@ -113,12 +121,15 @@ public class MainActivity extends AppCompatActivity
     //Clases Asyntask para login y usuario que inicia sesion
     private class TareaLogin extends AsyncTask<String,Integer,Boolean>
     {
+        //Variable que guardara la respuesta del servidor
         private String respStr;
+        //Animacion de la pantalla
         int progreso;
 
         @TargetApi(Build.VERSION_CODES.KITKAT)
         protected Boolean doInBackground(String... params)
         {
+            //Declaramos la variables con las que vamos hacer la conexion y le asignamos la url a la que nos vamos a conectar
             boolean resul = true;
             HttpClient httpClient;
             List<NameValuePair> nameValuePairs;
@@ -126,6 +137,7 @@ public class MainActivity extends AppCompatActivity
             httpClient= new DefaultHttpClient();
             httpPost = new HttpPost("http://appjuzgado.pypabogados.com/Controller/ControllerLogin.php");
 
+            //Enviamos las variables que fueron enviadas como parametros a la webservice con los campos que la webservice
             nameValuePairs = new ArrayList<NameValuePair>();
             nameValuePairs.add(new BasicNameValuePair("cedula", params[0]));
             nameValuePairs.add(new BasicNameValuePair("password", params[1]));
@@ -133,16 +145,22 @@ public class MainActivity extends AppCompatActivity
 
             try
             {
+                //ejecutamos lo que va hacer enviado
                 httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                //Capturamos la respuesta del servidor
                 HttpResponse resp= httpClient.execute(httpPost);
 
+                //Combertimos esa respuesta en un String
                 respStr = EntityUtils.toString(resp.getEntity());
 
+                //Combertimos ese String en un Json para poder aceeder a los mensajes que el servidor nos responde
                 JSONObject respJSON = new JSONObject(respStr);
                 JSONArray objItems = respJSON.getJSONArray("items");
 
+                //Como la respuesta ya quedo en jSon la convertimos a un array para poder comparar que es lo que dice el mensaje
                 respuesta= String.valueOf(objItems);
 
+                //preguntamos si la respuesta es igual a no existe y cambiamos la variable existe
                 if(respuesta.equalsIgnoreCase("No Existe"))
                 {
                     existe = false;
@@ -154,6 +172,7 @@ public class MainActivity extends AppCompatActivity
 
                 resul = true;
             }
+            //catch evitar errores cuando se haga la conexion
             catch(UnsupportedEncodingException e)
             {
                 e.printStackTrace();
@@ -174,6 +193,7 @@ public class MainActivity extends AppCompatActivity
                 e.printStackTrace();
             }
 
+            //La animacion que va a durar hasta que el servidor de una respuesta
             while (progreso<100)
             {
                 progreso++;
@@ -184,6 +204,7 @@ public class MainActivity extends AppCompatActivity
             return resul;
         }
 
+        //Metodos de la animacion
         @Override
         protected void onPreExecute()
         {
@@ -198,18 +219,24 @@ public class MainActivity extends AppCompatActivity
             progressLogin.setProgress(values[0]);
         }
 
+        //Metodo que se ejucuta cuando en la conexion no salio ningun error
         protected void onPostExecute(Boolean result)
         {
             //Toast.makeText(MainActivity.this,respStr,Toast.LENGTH_SHORT).show();
 
+            //preguntamos si la variable existe que verdadera y si lo es nos abrira la siguiente interfaz
             if (existe)
             {
+                //Lanzamos la otra actividad
                 Intent intent = new Intent(MainActivity.this, MenuPrincipal.class);
                 startActivity(intent);
+                //Paramos la animacion
                 layoutProgress.setVisibility(View.GONE);
                 layoutMain.setVisibility(View.VISIBLE);
+                //un Finish para que no se devuelva para esta actividad si no que se salga por completo
                 finish();
             }
+            //De haber quedado la variable existe en false nos saldra un mensaje y volvera a mostrar la pantalla inicial
             else
             {
                 Toast.makeText(MainActivity.this, "El Usuario no Existe", Toast.LENGTH_SHORT).show();

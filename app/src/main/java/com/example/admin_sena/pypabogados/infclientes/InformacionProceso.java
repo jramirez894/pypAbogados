@@ -5,6 +5,7 @@ package com.example.admin_sena.pypabogados.infclientes;
  */
 public class InformacionProceso
 {
+    //Clase que contiene los geter y seter de las variable creadas
     String idProcesos;
     String numRadicado;
     String demandado;

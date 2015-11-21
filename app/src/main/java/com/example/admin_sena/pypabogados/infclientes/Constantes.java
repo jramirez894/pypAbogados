@@ -5,6 +5,7 @@ package com.example.admin_sena.pypabogados.infclientes;
  */
 public class Constantes
 {
+    //Constantes en las que quedo guardada la informacion de las consultas hechas para luego ser llamadas desde la calse InformacionProceso
     public static String idProcesos;
     public static String numRadicado;
     public static String demandante;

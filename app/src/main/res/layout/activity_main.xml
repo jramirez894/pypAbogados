@@ -33,7 +33,6 @@
                     android:hint="Ingrese Documento"
                     android:textColorHint="@color/texto"
                     android:textColor="@color/texto"
-                    android:text="123"
                     android:drawableLeft="@mipmap/perfil"
                     android:inputType="number"
                     android:textSize="20sp"/>
@@ -45,7 +44,6 @@
                     android:hint="Ingrese Contraseña"
                     android:textColorHint="@color/texto"
                     android:textColor="@color/texto"
-                    android:text="123"
                     android:layout_marginTop="10dp"
                     android:drawableLeft="@mipmap/seguridad"
                     android:inputType="textPassword"
